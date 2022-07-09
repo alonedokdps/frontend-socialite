@@ -1,0 +1,114 @@
+.sidebar {
+	width: 300px;
+	background-color: #f9fafb;
+
+	-webkit-transition: all 300ms 0s ease-in-out;
+	transition: all 300ms 0s ease-in-out;
+	position: fixed;
+	top: 0;
+	left: 0;
+	height: 100%;
+	z-index: 11;
+	padding-bottom: 30px;
+	overflow: hidden;
+	border-right-width: 1px;
+	@media (min-width: 1024px) {
+		margin-top: 65px;
+	}
+	.sidebar_inner {
+		padding: 0 12px;
+		height: calc(100% - 40px);
+		ul {
+			list-style: none;
+
+			padding: 10px 0;
+
+			li {
+				display: -webkit-box !important;
+				display: -ms-flexbox !important;
+				display: flex !important;
+
+				a {
+					border-radius: 10px;
+					font-size: 16px;
+					color: #585757;
+					padding: 10px 12px;
+					-webkit-transition: 0.3s;
+					transition: 0.3s;
+					cursor: pointer;
+					position: relative;
+					font-weight: 600;
+					margin-bottom: 4px;
+					width: 100%;
+					display: -webkit-inline-box;
+					display: -ms-inline-flexbox;
+					display: inline-flex;
+					-webkit-box-align: center;
+					-ms-flex-align: center;
+					align-items: center;
+					&:hover {
+						background-color: #f3f4f6;
+					}
+					svg {
+						width: 26px;
+						height: 26px;
+						margin-right: 10px;
+					}
+				}
+			}
+		}
+		.simplebar-wrapper {
+			overflow: hidden;
+			width: inherit;
+			height: inherit;
+			max-width: inherit;
+			max-height: inherit;
+			.simplebar-mask {
+				direction: inherit;
+				position: absolute;
+				overflow: hidden;
+				padding: 0;
+				margin: 0;
+				left: 0;
+				top: 0;
+				bottom: 0;
+				right: 0;
+				width: auto !important;
+				height: auto !important;
+				z-index: 0;
+				.simplebar-offset {
+					direction: inherit !important;
+					-webkit-box-sizing: inherit !important;
+					box-sizing: inherit !important;
+					resize: none !important;
+					position: absolute;
+					top: 0;
+					left: 0;
+					bottom: 0;
+					right: 0;
+					padding: 0;
+					margin: 0;
+					-webkit-overflow-scrolling: touch;
+					.simplebar-content {
+						direction: inherit;
+						-webkit-box-sizing: border-box !important;
+						box-sizing: border-box !important;
+						position: relative;
+						display: block;
+						height: 100%;
+						width: auto;
+						visibility: visible;
+						overflow: scroll;
+						max-width: 100%;
+						max-height: 100%;
+					}
+				}
+			}
+		}
+	}
+	@media (max-width: 1200px) {
+		margin-left: -300px;
+		padding: 0;
+		background: transparent;
+	}
+}

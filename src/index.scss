@@ -1,0 +1,103 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+	scroll-behavior: smooth;
+}
+body {
+	@apply font-poppins;
+	&::-webkit-scrollbar {
+		width: 5px;
+	}
+	&::-webkit-scrollbar-thumb {
+		background-color: #666;
+		border-radius: 10px;
+	}
+	&::-webkit-scrollbar-track {
+		background-color: white;
+	}
+}
+.main_content {
+	padding-top: 65px;
+}
+@media (min-width: 1200px) {
+	.main_content {
+		margin-left: 300px;
+	}
+
+	.mcontainer {
+		max-width: 1000px;
+		padding: 30px 10px;
+		margin-left: auto;
+		margin-right: auto;
+	}
+}
+@media (max-width: 1200px) {
+	.mcontainer {
+		padding: 25px 15px;
+	}
+}
+.line-clamp-1,
+.line-clamp-2,
+.line-clamp-3 {
+	overflow: hidden;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+}
+
+.line-clamp-1 {
+	-webkit-line-clamp: 1;
+}
+
+.line-clamp-2 {
+	-webkit-line-clamp: 2;
+}
+
+.line-clamp-3 {
+	-webkit-line-clamp: 3;
+}
+
+// responsive col right
+.contact {
+	&-item {
+		display: -webkit-box;
+		display: -ms-flexbox;
+		display: flex;
+		-webkit-box-align: center;
+		-ms-flex-align: center;
+		align-items: center;
+		padding: 5px 0;
+		border-radius: 10px;
+
+		padding-left: 6px;
+		&:hover {
+			background-color: #f0f2f5;
+		}
+		&-username {
+			-webkit-box-flex: 1;
+			-ms-flex: 1 1 0%;
+			flex: 1 1 0%;
+			font-size: 0.8rem;
+			font-weight: 500;
+			color: #2d2d2d;
+		}
+		&-avatar {
+			position: relative;
+			width: 35px;
+			height: 35px;
+			border-radius: 50%;
+			margin-right: 15px;
+			img {
+				width: 100%;
+				height: 100%;
+				border-radius: 100%;
+				object-fit: cover;
+			}
+		}
+	}
+}

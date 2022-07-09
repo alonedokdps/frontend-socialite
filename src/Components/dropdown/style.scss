@@ -1,0 +1,42 @@
+p {
+	margin-bottom: 0 !important;
+}
+.dropdown.is_messages {
+	.dropdown-scrollbar {
+		&::-webkit-scrollbar {
+			width: 5px;
+		}
+		&::-webkit-scrollbar-thumb {
+			background-color: #666;
+			border-radius: 10px;
+		}
+		&::-webkit-scrollbar-track {
+			background-color: #eee;
+		}
+	}
+}
+ul li a .drop_text {
+	-webkit-box-flex: 1;
+	-ms-flex: 1;
+	flex: 1;
+	line-height: 23px;
+	font-size: 13.5px;
+	padding-left: 16px;
+	p {
+		font-size: 13.5px;
+		overflow: hidden;
+		display: -webkit-box;
+		-webkit-box-orient: vertical;
+		-webkit-line-clamp: 2;
+
+		.text-link {
+			color: #5833fd;
+		}
+	}
+	time {
+		font-size: 12px;
+		color: #9f9d9d;
+		margin-top: -3px;
+		display: block;
+	}
+}
