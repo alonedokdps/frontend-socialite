@@ -40,4 +40,3 @@ test: Adding missing tests or correcting existing tests
 ## scope thì là optional, và nếu có thì nó nên là tên của package mà commit hiện tại làm ảnh hưởng. Mình thấy scope thường dùng ở các repository mà chứa nhiều packages dạng monorepo, ví dụ repo của Vue 3, scope sẽ là tên của 1 package nào đó ở folder packages
 
 ## subject là nội dung của commit
-## end

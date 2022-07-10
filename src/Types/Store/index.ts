@@ -10,7 +10,7 @@ export type ActionCallback = {
 export type Payload = {
     id?: string | number,
     data?: any,
-    params?: any, 
+    params?: any,
     callback?: ActionCallback
 }
 

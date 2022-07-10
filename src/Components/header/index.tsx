@@ -1,225 +1,135 @@
-import { useMemo, useCallback } from 'react'
-import styled from 'styled-components'
-import i18next from '@i18n'
-import { Dropdown, Menu } from 'antd'
-import { useTranslation } from 'react-i18next'
-import { HomeOutlined } from '@ant-design/icons'
+import React from "react";
+import logo from "../../Assets/images/logo.png";
+import logoMobile from "../../Assets/images/logo-mobile.png";
+import "./style.scss";
+import NumNotification from "@components/numbernotification/NumNotification";
+const index = () => {
+	return (
+		<header>
+			<div className="header_wrap">
+				<div className="header_inner mcontainer">
+					<div className="left-side">
+						<span className="slide_menu">
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								viewBox="0 0 24 24"
+								width="24"
+								height="24"
+							>
+								<path
+									d="M3 4h18v2H3V4zm0 7h12v2H3v-2zm0 7h18v2H3v-2z"
+									fill="currentColor"
+								></path>
+							</svg>
+						</span>
+						<div id="logo">
+							<img src={logo} alt="" />
+							<img
+								src={logoMobile}
+								alt=""
+								className="logo-mobile"
+							/>
+						</div>
+					</div>
+					<div
+						style={{ marginLeft: "auto" }}
+						className="header-search-icon"
+					>
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							className="w-6 h-6"
+							fill="none"
+							viewBox="0 0 24 24"
+							stroke="currentColor"
+							strokeWidth="2"
+						>
+							<path
+								strokeLinecap="round"
+								strokeLinejoin="round"
+								d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+							/>
+						</svg>
+					</div>
+					<div className="header-search">
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							className="w-6 h-6"
+							fill="none"
+							viewBox="0 0 24 24"
+							stroke="currentColor"
+							strokeWidth="2"
+						>
+							<path
+								strokeLinecap="round"
+								strokeLinejoin="round"
+								d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+							/>
+						</svg>
+						<input
+							type="text"
+							placeholder="Search for Friends , Videos and more.."
+						/>
+					</div>
 
-import { EN_ICON, VI_ICON, JP_ICON, E_LEARNING_LOGO, LOGOUT_ICON } from '@assets'
-import { removeLocalStorage, STORAGE } from '@utils'
-import { useAuth } from '@hooks'
-import { USER_URL, SIGNAL_TYPE } from '@constants'
-import { USER_ROLE } from '@constants/auth'
+					<div className="right_side">
+						<div className="header_widgets">
+							<button className="is_toggle">Night Mode</button>
+							<button className="is_icon">
+								<svg
+									fill="currentColor"
+									viewBox="0 0 20 20"
+									xmlns="http://www.w3.org/2000/svg"
+								>
+									<path d="M3 1a1 1 0 000 2h1.22l.305 1.222a.997.997 0 00.01.042l1.358 5.43-.893.892C3.74 11.846 4.632 14 6.414 14H15a1 1 0 000-2H6.414l1-1H14a1 1 0 00.894-.553l3-6A1 1 0 0017 3H6.28l-.31-1.243A1 1 0 005 1H3zM16 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM6.5 18a1.5 1.5 0 100-3 1.5 1.5 0 000 3z"></path>
+								</svg>
+								<NumNotification />
+							</button>
+							<button className="is_icon">
+								<svg
+									fill="currentColor"
+									viewBox="0 0 20 20"
+									xmlns="http://www.w3.org/2000/svg"
+								>
+									<path d="M3 1a1 1 0 000 2h1.22l.305 1.222a.997.997 0 00.01.042l1.358 5.43-.893.892C3.74 11.846 4.632 14 6.414 14H15a1 1 0 000-2H6.414l1-1H14a1 1 0 00.894-.553l3-6A1 1 0 0017 3H6.28l-.31-1.243A1 1 0 005 1H3zM16 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM6.5 18a1.5 1.5 0 100-3 1.5 1.5 0 000 3z"></path>
+								</svg>
+							</button>
+							<button className="is_icon">
+								<svg
+									fill="currentColor"
+									viewBox="0 0 20 20"
+									xmlns="http://www.w3.org/2000/svg"
+								>
+									<path d="M3 1a1 1 0 000 2h1.22l.305 1.222a.997.997 0 00.01.042l1.358 5.43-.893.892C3.74 11.846 4.632 14 6.414 14H15a1 1 0 000-2H6.414l1-1H14a1 1 0 00.894-.553l3-6A1 1 0 0017 3H6.28l-.31-1.243A1 1 0 005 1H3zM16 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM6.5 18a1.5 1.5 0 100-3 1.5 1.5 0 000 3z"></path>
+								</svg>
+							</button>
+							<button>
+								<img
+									src="http://demo.foxthemes.net/socialitev2.2/assets/images/avatars/avatar-2.jpg"
+									className="is_avatar"
+								/>
+							</button>
+						</div>
+					</div>
+					<div className="start-chat">
+						<svg
+							className="h-7 w-7"
+							fill="none"
+							stroke="currentColor"
+							viewBox="0 0 24 24"
+							xmlns="http://www.w3.org/2000/svg"
+						>
+							<path
+								strokeLinecap="round"
+								strokeLinejoin="round"
+								strokeWidth="2"
+								d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"
+							></path>
+						</svg>
+					</div>
+				</div>
+			</div>
+		</header>
+	);
+};
 
-const Wrapper = styled.header`
-  margin: .7rem 1rem;
-	padding: 0 0.75rem;
-  position: sticky;
-  z-index: 999;
-  top: 0;
-  display: flex;
-  height: 4rem;
-  align-items: center;
-  border-bottom: 0 solid #f8f9fa;
-  border-radius: 1rem;
-  box-shadow: 0 1.6rem 3rem rgb(0 0 0 / 10%);
-  background-color: ${({ theme }) => theme.bg_light_transparent};
-  backdrop-filter: blur(0.5rem);
-  will-change: backdrop-filter;
-
-  .container {
-    padding: 0 .75rem;
-    width: 100%;
-    .row {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      .header-left {
-        flex: 1 0;
-        .search {
-          display: flex;
-          align-items: center;
-          label.cursor-pointer {
-            cursor: pointer;
-            svg.svg-icon--material {
-              font-size: 1.5rem;
-              fill: #6c5ed3;
-            }
-          }
-          input.search-input {
-            border: none;
-            background-color: transparent;
-            width: 100%;
-            font-weight: 500;
-            padding: .3rem .75rem;
-
-            &:focus-visible {
-              outline: none;
-            }
-          }
-        }
-        .logo {
-          width: 150px;
-        }
-      }
-      .header-right {
-        flex: 0 0 auto;
-        width: auto;
-        .row {
-          flex-wrap: wrap;
-
-          .col-auto {
-            margin: .5rem;
-            button {
-              cursor: pointer;
-            }
-          }
-
-          .btn-action {
-            padding: .625rem;
-            width: calc(28px + 1.25rem);
-            height: calc(28px + 1.25rem);
-            background-color: transparent;
-            border: none;
-            border-radius: 1.25rem;
-            &:hover, &:active {
-              background-color: #e7eef8;
-              border-color: #e7eef8;
-            }
-          }
-
-          .user-info {
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-
-            .text-end {
-              text-align: end;
-              margin-right: .7rem;
-              .name {
-                font-weight: 600;
-                font-size: .75rem;
-                color: #808191;
-              }
-
-              .title {
-                font-weight: 300;
-                font-size: .75rem;
-                color: #6c757d;
-              }
-            }
-
-            .avatar {
-              background-color: #fff3d4;
-              border-radius: 50%;
-            }
-          }
-        }
-      }
-    }
-  }
-`
-
-const Header = () => {
-  const { i18n: { language } } = useTranslation()
-  const { profile } = useAuth()
-  const role = profile?.role
-
-  const handleLogout = useCallback(() => {
-    removeLocalStorage(STORAGE.USER_TOKEN)
-
-    window.location.replace(`${USER_URL}?signal=${SIGNAL_TYPE.LOGOUT}`)
-  }, [])
-
-  const languageIcon = useMemo(() => {
-    switch (language) {
-      case 'en':
-        return <EN_ICON />
-      case 'jp':
-        return <JP_ICON />
-      case 'vi':
-        return <VI_ICON />
-      default:
-        return null
-    }
-  }, [language])
-
-  const menu = (
-    <Menu>
-      <Menu.Item key="0" onClick={() => i18next.changeLanguage('en')}>
-        <EN_ICON />
-        <span>&nbsp;English</span>
-      </Menu.Item>
-      <Menu.Item key="1" onClick={() => i18next.changeLanguage('jp')}>
-        <JP_ICON />
-        <span>&nbsp;日本語</span>
-      </Menu.Item>
-      <Menu.Item key="2" onClick={() => i18next.changeLanguage('vi')}>
-        <VI_ICON />
-        <span>&nbsp;Tiếng Việt</span>
-      </Menu.Item>
-    </Menu>
-  )
-
-  const dropdownMenu = (
-    <Menu>
-      {role === USER_ROLE.COMPANY_ADMIN && (
-      <>
-        <Menu.Item key="0" onClick={() => window.location.replace(USER_URL)}>
-          <HomeOutlined />
-          <span>&nbsp;User page</span>
-        </Menu.Item>
-        <Menu.Divider />
-      </>
-      )}
-      <Menu.Item key="1" onClick={handleLogout}>
-        <LOGOUT_ICON className="logout-icon" />
-        <span>&nbsp;Logout</span>
-      </Menu.Item>
-    </Menu>
-  )
-
-  return (
-    <Wrapper>
-      <div className="container">
-        <div className="row">
-          <div className="header-left">
-            {/* <div className="search" data-tour="search">
-              <label className="border-0 bg-transparent cursor-pointer" htmlFor="searchInput"><SEARCH_ICON /></label>
-              <input id="searchInput" name="searchInput" type="search" className="search-input" placeholder="Search..." autoComplete="off" value="" />
-            </div> */}
-            <img className="logo" src={E_LEARNING_LOGO} alt="logo" />
-          </div>
-          <div className="header-right">
-            <div className="row g-3">
-              <div className="col-auto">
-                <Dropdown overlay={menu} trigger={['click']}>
-                  <button type="button" className="btn-action" aria-label="Change language" data-tour="lang-selector" aria-expanded="false">
-                    {languageIcon}
-                  </button>
-                </Dropdown>
-              </div>
-              <div className="col user-info" role="presentation">
-                <Dropdown overlay={dropdownMenu} trigger={['click']}>
-                  <a href="true" className="ant-dropdown-link" style={{ display: 'flex', alignItems: 'center' }} onClick={(e) => e.preventDefault()}>
-                    <div className="me-3">
-                      <div className="text-end">
-                        <div className="name">{profile?.nameKatakana || 'カタカナ ナハマ'}</div>
-                        <div className="title"><small>CEO, Founder</small></div>
-                      </div>
-                    </div>
-                    <div className="position-relative">
-                      <img className="avatar rounded-circle bg-lo25-warning" src={profile?.avatar || 'https://facit-modern.omtanke.studio/static/media/wanna6.33be1958d20715345cc6.webp'} alt="Avatar" width="48" height="48" />
-                    </div>
-                  </a>
-                </Dropdown>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </Wrapper>
-  )
-}
-
-export default Header
+export default index;

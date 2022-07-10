@@ -16,5 +16,4 @@ export const ROUTES = [
     exact: true,
   },
 ]
-
 export default RoutesName
