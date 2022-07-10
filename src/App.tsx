@@ -42,12 +42,12 @@ const App = () => {
       <Header />
       <SiderBar />
       <MainContent>
-        {/* <ProFileUser />
-        <CourseList /> */}
+        <ProFileUser />
+        {/* <CourseList /> */}
         {/* <GameList /> */}
         {/* <ProductList /> */}
         {/* <JobList /> */}
-        <GroupList />
+        {/* <GroupList /> */}
       </MainContent>
     </Main>
   )
